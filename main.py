@@ -3,7 +3,7 @@ import string
 from datetime import datetime
 from random import sample, choice
 import os
-
+from config import tLinks
 
 def generate_file_path(truthType: str, levels: int = 3, fileNameLen: int = 15, tag="#"):
     today = str(datetime.now().strftime("%d%m%y"))
@@ -29,15 +29,16 @@ def generate_markdown_file(
     os.makedirs(directory, exist_ok=True)
     # Markdown content
     middlePath = "../" * levels
+    tLink=random.choice(tLinks)
     markdown_content = f"""\
-# Displaying Images
 <div style="text-align: center;">
     <img src="./../../{middlePath}im/1.jpg" alt="Image 1" />
 </div>
-
+[网站链接 3 - 请点击此处]({tLink}) 
 <div style="text-align: center;">
     <img src="./../../{middlePath}im/2.jpg" alt="Image 2" />
 </div>
+[网站链接 3 - 请点击此处]({tLink}) 
 """
 
     # Save the Markdown content to a file
