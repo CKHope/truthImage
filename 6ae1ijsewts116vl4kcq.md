@@ -1,4 +1,7 @@
-# Displaying Images
+<div style="text-align: center;">
+    <img src="./im/1.jpg" alt="Image 1" />
+</div>
 
-![Image 1](./im/1.jpg)
-![Image 2](./im/2.jpg)
+<div style="text-align: center;">
+    <img src="./im/2.jpg" alt="Image 2" />
+</div>
