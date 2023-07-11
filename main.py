@@ -18,21 +18,25 @@ def generate_file_path(truthType: str, levels: int = 3, fileNameLen: int = 15, t
     return file_path
 
 
-def generate_markdown_file(length):
+def generate_markdown_file(
+    truthType: str = "h", levels: int = 3, fileNameLen: int = 2, tag: str = ""
+):
     # Generate a random filename
-    filePath = generate_file_path(truthType="h", levels=3, fileNameLen=2, tag="")
+    filePath = generate_file_path(
+        truthType=truthType, levels=levels, fileNameLen=fileNameLen, tag=tag
+    )
     directory = os.path.dirname(filePath)
     os.makedirs(directory, exist_ok=True)
     # Markdown content
-    markdown_content = """\
+    middlePath = "../" * levels
+    markdown_content = f"""\
 # Displaying Images
-
 <div style="text-align: center;">
-    <img src="./im/1.jpg" alt="Image 1" />
+    <img src="./../../{middlePath}im/1.jpg" alt="Image 1" />
 </div>
 
 <div style="text-align: center;">
-    <img src="./im/2.jpg" alt="Image 2" />
+    <img src="./../../{middlePath}im/2.jpg" alt="Image 2" />
 </div>
 """
 
@@ -41,7 +45,8 @@ def generate_markdown_file(length):
         file.write(markdown_content)
 
     print(f"Markdown file '{filePath}' has been generated.")
+    return markdown_content
 
 
 # Example usage
-generate_markdown_file(20)
+generate_markdown_file(truthType="h", levels=5, fileNameLen=1, tag="#")
